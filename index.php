@@ -17,10 +17,12 @@ $tasks = $db->getAllTasks();
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
     <title>Document</title>
 </head>
 <body>
-<h1>Hello</h1>
+
 
 
 <!-- Nav -->
@@ -64,18 +66,21 @@ $tasks = $db->getAllTasks();
 
 <!-- Block -->
 
-<div class="how-section1">
-    <?php foreach($tasks as $task):?>
-        <div class="row">
-            <div class="col-md-6 how-img">
-                <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+<div class="wrapper">
+    <h1>Список статей</h1>
+    <div class="how-section1">
+        <?php foreach($tasks as $task):?>
+            <div class="row">
+                <div class="col-md-6 how-img">
+                    <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                </div>
+                <div class="col-md-6">
+                    <h4><?= $task['title'];?></h4>
+                    <p class="text-muted"><?= mb_strimwidth($task['content'], 0, 250, "...");?></p>
+                </div>
             </div>
-            <div class="col-md-6">
-                <h4><?= $task['title'];?></h4>
-                <p class="text-muted"><?= mb_strimwidth($task['content'], 0, 250, "...");?></p>
-            </div>
-        </div>
-    <?php endforeach;?>
+        <?php endforeach;?>
+    </div>
 </div>
 
 <!-- ./Block -->
