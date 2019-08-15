@@ -47,7 +47,7 @@ class QueryBuilder
             $page = 1;
         }
 
-        $notesOnePage = 3;
+        $notesOnePage = $this->notesOnePage;
         $from = ($page - 1) * $this->notesOnePage;
         $sql = "SELECT * FROM tasks WHERE id > 0 LIMIT $from, $notesOnePage";
 
@@ -59,6 +59,8 @@ class QueryBuilder
         return $tasks;
     }
 
+
+    // Подсчет числа страниц
     public function getPageCount()
     {
 
