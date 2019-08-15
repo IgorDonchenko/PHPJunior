@@ -6,6 +6,8 @@ $db = new QueryBuilder;
 
 $tasks = $db->getTasksPagination();
 
+$pagination = $db->getPageCount();
+
 ?>
 
 
@@ -87,23 +89,28 @@ $tasks = $db->getTasksPagination();
 
 
 <!-- Pagination -->
-<div class="wrapper">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">«</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+<div class="wrapper-one">
+        <nav aria-label="Page navigation example" class="navi">
+            <ul class="pagination" style="justify-content: center">
+                <!--<li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>-->
+                <?php
+
+                $pagination = ceil($pagination[0][0] / 3);
+                for ($i = 1; $i <= $pagination; $i++) {
+                    echo '<li class="page-item"><a class="page-link" href="?page=' . $i . ' " >' . $i . '</a>';
+                }
+
+                ?>
+
+                <!--<a class="page-link" href="#" aria-label="Next">
                     <span aria-hidden="true">»</span>
                     <span class="sr-only">Next</span>
-                </a>
+                </a>-->
             </li>
         </ul>
     </nav>

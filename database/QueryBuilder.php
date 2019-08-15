@@ -2,8 +2,21 @@
 
 class QueryBuilder
 {
+
+    // Задаем размер пагинации
+    public $notesOnePage = 3;
+
+    // Подключаемся к БД
+    public function connectDB()
+    {
+        $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+
+        return $pdo;
+    }
+
+
     //Список статей
-    function getAllTasks()
+    public function getAllTasks()
     {
         // 1. Подключиться к БД
         $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
@@ -18,16 +31,15 @@ class QueryBuilder
         return $tasks;
     }
 
-    function getTasksPagination()
+    //Список статей с пагинацией
+    public function getTasksPagination()
     {
         // 1. Подключиться к БД
-        $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+        $pdo = $pdo = $this->connectDB();
         // CRUD
         //2. Подготовить запрос
         //2.1 Ограничиваем количество выводимых тасков для пагинации
-        /*$page = (int)$_GET['page'];
-        var_dump($page);
-        die;*/
+
 
         if (isset($_GET['page']) AND (int)($_GET['page']) > 0) {
             $page = (int)$_GET['page'];
@@ -36,7 +48,7 @@ class QueryBuilder
         }
 
         $notesOnePage = 3;
-        $from = ($page - 1) * $notesOnePage;
+        $from = ($page - 1) * $this->notesOnePage;
         $sql = "SELECT * FROM tasks WHERE id > 0 LIMIT $from, $notesOnePage";
 
         //2.2 Готовим запрос
@@ -46,4 +58,19 @@ class QueryBuilder
 
         return $tasks;
     }
+
+    public function getPageCount()
+    {
+
+        $pdo = $this->connectDB();
+
+        //$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+        $sql = "SELECT COUNT(*) as countMy FROM tasks";
+        $statement = $pdo->prepare($sql); //подготовить
+        $result = $statement->execute(); //true || false
+        $tasks = $statement->fetchAll();
+
+        return $tasks;
+    }
+
 }
