@@ -78,7 +78,7 @@ echo $tasks;
             </div>
             <div class="col-md-6">
                 <h4><?= $task['title'];?></h4>
-                <p class="text-muted"><?= $task['content'];?></p>
+                <p class="text-muted"><?= mb_strimwidth($task['content'], 0, 250, "...");?></p>
             </div>
         </div>
     <?php endforeach;?>
