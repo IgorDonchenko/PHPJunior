@@ -25,8 +25,12 @@ class QueryBuilder
         // CRUD
         //2. Подготовить запрос
         //2.1 Ограничиваем количество выводимых тасков для пагинации
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
+        /*$page = (int)$_GET['page'];
+        var_dump($page);
+        die;*/
+
+        if (isset($_GET['page']) AND (int)($_GET['page']) > 0) {
+            $page = (int)$_GET['page'];
         } else {
             $page = 1;
         }
