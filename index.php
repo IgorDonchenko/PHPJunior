@@ -1,16 +1,10 @@
 <?php
 
-// 1. Подключиться к БД
-$pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
-// CRUD
-//2. Подготовить запрос
-$sql = "SELECT * FROM tasks";
-$statement = $pdo->prepare($sql); //подготовить
-$result = $statement->execute(); //true || false
-$tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
-echo $tasks;
+require 'database/QueryBuilder.php';
 
-//Получаем записи
+$db = new QueryBuilder;
+
+$tasks = $db->getAllTasks();
 
 ?>
 
