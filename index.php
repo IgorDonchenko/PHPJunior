@@ -20,6 +20,7 @@ $pagination = $db->getPageCount();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/flex.css">
 
     <title>Document</title>
 </head>
@@ -87,6 +88,28 @@ $pagination = $db->getPageCount();
 
 <!-- ./Block -->
 
+<!-- Block -->
+
+<div class="wrapper">
+    <h1>Верстка на Flex</h1>
+    <div class="flexwrap">
+        <?php foreach($tasks as $task):?>
+            <div class="flexwrap-block">
+                <div class="block-img">
+                    <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                </div>
+                <div class="block-article">
+                    <h4><?= $task['title'];?></h4>
+                    <p class="text-muted"><?= mb_strimwidth($task['content'], 0, 250, "...");?></p>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
+
+</div>
+
+<!-- ./Block -->
+
 
 <!-- Pagination -->
 <div class="wrapper-one">
@@ -100,7 +123,7 @@ $pagination = $db->getPageCount();
                 </li>-->
                 <?php
 
-                $pagination = ceil($pagination[0][0] / 3);
+                $pagination = ceil($pagination[0][0] / $db->notesOnePage);
                 for ($i = 1; $i <= $pagination; $i++) {
                     echo '<li class="page-item"><a class="page-link" href="?page=' . $i . ' " >' . $i . '</a>';
                 }

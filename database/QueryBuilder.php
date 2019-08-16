@@ -4,7 +4,7 @@ class QueryBuilder
 {
 
     // Задаем размер пагинации
-    public $notesOnePage = 3;
+    public $notesOnePage = 2;
 
     // Подключаемся к БД
     public function connectDB()
@@ -19,7 +19,7 @@ class QueryBuilder
     public function getAllTasks()
     {
         // 1. Подключиться к БД
-        $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+        $pdo = $pdo = $this->connectDB();
         // CRUD
         //2. Подготовить запрос
 
