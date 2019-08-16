@@ -90,7 +90,7 @@ $pagination = $db->getPageCount();
 
 <!-- Block -->
 
-<div class="wrapper">
+<div class="flexwrapper">
     <h1>Верстка на Flex</h1>
     <div class="flexwrap">
         <?php foreach($tasks as $task):?>

@@ -4,7 +4,7 @@ class QueryBuilder
 {
 
     // Задаем размер пагинации
-    public $notesOnePage = 2;
+    public $notesOnePage = 5;
 
     // Подключаемся к БД
     public function connectDB()
