@@ -1,6 +1,10 @@
 <?php
 
-require 'database/QueryBuilder.php';
+use database\QueryBuilder;
+
+//require 'database/QueryBuilder.php';
+
+require_once __DIR__ . '/vendor/autoload.php';
 
 $db = new QueryBuilder;
 

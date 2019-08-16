@@ -1,5 +1,9 @@
 <?php
 
+namespace database;
+
+use PDO;
+
 class QueryBuilder
 {
 
@@ -9,7 +13,7 @@ class QueryBuilder
     // Подключаемся к БД
     public function connectDB()
     {
-        $pdo = new PDO("mysql:host=localhost; dbname=test", "root", "");
+        $pdo = new \PDO("mysql:host=localhost; dbname=test", "root", "");
 
         return $pdo;
     }
